@@ -1,0 +1,308 @@
+:root {
+    --big-color: #212529;
+    --big-color1: #5b5757; /* Açık gri renk */
+    --big-color2: #343a40; /* Koyu gri renk */
+    --aqi-1: #d4e157;
+    --aqi-2: #ffee58;
+    --aqi-3: #ffca28;
+    --aqi-4: #ff7043;
+    --aqi-5: #f5350;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: var(--big-color1);
+    color: #fff;
+    font-family: sans-serif;
+    padding: 0 15px;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    background-color: var(--big-color1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.weather-data {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 sütunlu grid yapısı */
+    gap: 10px; /* Sütunlar arası boşluk */
+}
+
+.weather-right {
+    grid-column: span 2; /* Sağ panel genişliği */
+    padding: 20px; /* İç boşluk */
+    background-color: var(--big-color2); /* Arka plan rengi */
+    border-radius: 15px; /* Köşeleri yuvarlat */
+}
+
+.weather-right h2 {
+    margin-bottom: 10px; /* Başlık ile altındaki içerikler arasındaki boşluk */
+}
+
+.weather-left {
+    grid-column: span 2; /* Sol panel genişliği */
+    display: grid; /* İçeriği grid düzeninde gösterir */
+    gap: -5px; /* İçerikler arası boşluk */
+
+}
+
+#city_input {
+    background-color: var(--big-color2);
+    border: none;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 25px;
+    color: #fff;
+}
+
+#city_input:focus {
+    outline: none;
+}
+
+#searchBtn {
+    border: none;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 25px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#locationBtn {
+    border: none;
+    font-size: 16px;
+    padding: 12px;
+    border-radius: 25px;
+    background-color: #ea6e4b;
+    cursor: pointer;
+}
+
+.card {
+    background-color: var(--big-color2);
+    padding: 30px; /* İç boşluk genişletildi */
+    border-radius: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column; /* İçeriği dikeyde hizala */
+    align-items: flex-end; /* İçerikleri sağa hizala */
+    height: 200px; /* Yüksekliği artırarak daha fazla yer ayırma */
+    width: 200px; /* Genişliği ayarla */
+}
+
+.card h2 {
+    margin: 0; /* Margin ayarını kaldır */
+    font-size: 70px; /* Derece yazısının boyutu */
+    font-weight: 500; /* Yazı kalınlığı */
+    text-align: right; /* Derece yazısını sağa hizala */
+}
+
+.card p {
+    color: #999;
+    font-size: 20px; /* Yazı boyutu */
+    text-align: right; /* 'NOW' yazısını sağa hizala */
+}
+
+/* ŞEKİL TARİH VE KONUM */
+.card-footer p {
+    background-color: var(--big-color2); /* Arka plan rengi */
+    padding: 20px; /* İç boşluk */
+    border-radius: 10px; /* Köşeleri yuvarlat */
+    margin-bottom: 10px; /* Altına boşluk */
+    font-size: 15px; /* ŞEKİL TARİH VE KONUM boyutu */
+    color: #fff; /* Yazı rengi */
+}
+
+.card-footer p i {
+    margin-right: 20px; /* İkon ile yazı arasındaki boşluk */
+}
+
+/* 5 günlük hava tahmini */
+.forecast-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 5 günlük hava tahmininin tek bir satıra sığması */
+    place-items: center;
+    margin-bottom: 15px;
+}
+
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.highlights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 15px;
+}
+
+.highlights .card:nth-of-type(1),
+.highlights .card:nth-of-type(2) {
+    grid-column: span 2; /* İlk iki kart genişliği */
+}
+
+.card-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/*/* Hava kalitesi göstergeleri */
+/*.air-index {
+    color: #c5115c;
+    padding: 10px; /* İçerik ile kenarlık arasındaki boşluk */
+  /*  border-radius: 15px;
+}
+
+/* AQI renkleri */
+/*.air-index.aqi-1 {
+    /*background-color: var(--aqi-1);
+}
+
+.air-index.aqi-2 {
+    background-color: var(--aqi-2);
+}
+
+.air-index.aqi-3 {
+    background-color: var(--aqi-3);
+}
+
+.air-index.aqi-4 {
+    background-color: var(--aqi-4);
+}
+
+.air-index.aqi-5 {
+    background-color: var(--aqi-5);
+}
+
+.air-indices {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+    text-align: center;
+    padding: 150px; /* İç boşluk genişletildi *//*
+}
+*/
+.current-weather {
+    display: flex;
+    justify-content: flex-end; /* Sağda hizala */
+    align-items: center;
+    gap: 20px; /* İçerik arasında boşluk */
+    background-color: var(--big-color2); /* Arka plan rengi */
+    padding: 20px; /* İç boşluk */
+    border-radius: 15px; /* Köşeleri yuvarlat */
+    margin-bottom: 15px; /* Altına boşluk */
+}
+
+.current-weather h2 {
+    margin: 7px 0;
+}
+
+.current-weather p {
+    color: #fff;
+}
+
+.sunrise-sunset {
+    display: flex;
+    justify-content: space-between; /* Öğeler arasında eşit boşluk bırakma */
+    gap: 20px; /* Kutular arasındaki boşluğu artır */
+    padding: 40px; /* İç boşluk genişletildi */
+    background-color: var(--big-color2); /* Arka plan rengi */
+    border-radius: 15px; /* Köşeleri yuvarlat */
+    align-items: center; /* Öğeleri dikeyde ortala */
+    margin-bottom: 30px; /* Altına boşluk ekleme */
+}
+
+.sunrise-sunset .item {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Simge ile yazı arasındaki boşluk */
+    font-size: 50px; /* Yazı boyutu */
+}
+
+.sunrise-sunset .item h2 {
+    margin: 0; /* Margin ayarını kaldır */
+    font-size: 18px; /* Yazı boyutunu artır */
+}
+
+.sunrise-sunset .item img {
+    width: 48px; /* Simge boyutunu artır */
+    height: 48px; /* Simge boyutunu artır */
+}
+
+.sunrise-sunset .item p {
+    font-size: 16px;
+    margin: 0;
+    color: #999; /* Açıklama yazısının rengi */
+}
+
+
+/*sonradan eklensi alttakiler*/ 
+#sunrise, #sunset {
+    font-size: 18px;
+    color: #ddd;
+}
+#temp {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0;
+}
+
+#description {
+    font-size: 24px;
+    margin: 0;
+}
+
+#date, #city {
+    font-size: 18px;
+    color: #ddd;
+}
+/* Nem (humidity) kartı */
+.humidity-card {
+    background-color: var(--big-color2);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    height: 100%; /* Yüksekliği %100 yaparak içeriğin tüm alanı kaplamasını sağlar */
+}
+
+.humidity-card h3 {
+    margin: 0;
+}
+
+.humidity-card h3 span {
+    font-size: 36px;
+    font-weight: bold;
+}
+/* Rüzgar (wind) kartı */
+.wind-card {
+    background-color: var(--big-color2);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    height: 100%; /* Yüksekliği %100 yaparak içeriğin tüm alanı kaplamasını sağlar */
+}
+
+.wind-card h3 {
+    margin: 0;
+}
+
+.wind-card h3 span {
+    font-size: 36px;
+    font-weight: bold;
+}
+/* Kartlar için ayarlar */
+.card, .humidity-card, .wind-card {
+    width: 100%; /* Kart genişliklerini %100 yaparak tüm sütunu kaplamalarını sağlar */
+}
