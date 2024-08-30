@@ -37,7 +37,7 @@ body {
 .weather-data {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 sütunlu grid yapısı */
-    gap: 10px; /* Sütunlar arası boşluk */
+    gap: 7px; /* Sütunlar arası boşluk */
 }
 
 .weather-right {
@@ -58,7 +58,7 @@ body {
 
 }
 
-#city_input {
+#city_input { /*enter city name yazısı*/
     background-color: var(--big-color2);
     border: none;
     padding: 12px;
@@ -89,16 +89,18 @@ body {
     cursor: pointer;
 }
 
-.card {
+.card { /* Wind ve Humidity yazısı*/
     background-color: var(--big-color2);
     padding: 30px; /* İç boşluk genişletildi */
     border-radius: 15px;
     margin-bottom: 15px;
     display: flex;
     flex-direction: column; /* İçeriği dikeyde hizala */
-    align-items: flex-end; /* İçerikleri sağa hizala */
+    align-items:center ; /* İçerikleri sağa hizala: flex-end ,ortalamak için center */
     height: 200px; /* Yüksekliği artırarak daha fazla yer ayırma */
     width: 200px; /* Genişliği ayarla */
+    font-size: 20px; /* Derece yazısının boyutu */
+
 }
 
 .card h2 {
@@ -111,17 +113,19 @@ body {
 .card p {
     color: #999;
     font-size: 20px; /* Yazı boyutu */
-    text-align: right; /* 'NOW' yazısını sağa hizala */
+    align-items: center;
+
 }
 
 /* ŞEKİL TARİH VE KONUM */
 .card-footer p {
     background-color: var(--big-color2); /* Arka plan rengi */
-    padding: 20px; /* İç boşluk */
+    padding: 17px; /* İç boşluk */
     border-radius: 10px; /* Köşeleri yuvarlat */
     margin-bottom: 10px; /* Altına boşluk */
-    font-size: 15px; /* ŞEKİL TARİH VE KONUM boyutu */
+    font-size: 20px; /* ŞEKİL TARİH VE KONUM boyutu */
     color: #fff; /* Yazı rengi */
+    
 }
 
 .card-footer p i {
@@ -134,6 +138,8 @@ body {
     grid-template-columns: repeat(3, 1fr); /* 5 günlük hava tahmininin tek bir satıra sığması */
     place-items: center;
     margin-bottom: 15px;
+    font-size: 25px; 
+
 }
 
 .icon-wrapper {
@@ -157,48 +163,11 @@ body {
     justify-content: space-between;
     margin-bottom: 10px;
 }
-
-/*/* Hava kalitesi göstergeleri */
-/*.air-index {
-    color: #c5115c;
-    padding: 10px; /* İçerik ile kenarlık arasındaki boşluk */
-  /*  border-radius: 15px;
-}
-
-/* AQI renkleri */
-/*.air-index.aqi-1 {
-    /*background-color: var(--aqi-1);
-}
-
-.air-index.aqi-2 {
-    background-color: var(--aqi-2);
-}
-
-.air-index.aqi-3 {
-    background-color: var(--aqi-3);
-}
-
-.air-index.aqi-4 {
-    background-color: var(--aqi-4);
-}
-
-.air-index.aqi-5 {
-    background-color: var(--aqi-5);
-}
-
-.air-indices {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    place-items: center;
-    text-align: center;
-    padding: 150px; /* İç boşluk genişletildi *//*
-}
-*/
 .current-weather {
     display: flex;
-    justify-content: flex-end; /* Sağda hizala */
+    justify-content: flex-start; /* Sağda hizala */
     align-items: center;
-    gap: 20px; /* İçerik arasında boşluk */
+    gap: 30px; /* İçerik arasında boşluk */
     background-color: var(--big-color2); /* Arka plan rengi */
     padding: 20px; /* İç boşluk */
     border-radius: 15px; /* Köşeleri yuvarlat */
@@ -256,15 +225,24 @@ body {
 #temp {
     font-size: 48px;
     font-weight: bold;
-    margin: 0;
+    margin-left: 50px; /* Sol margin ekle */
 }
 
 #description {
     font-size: 24px;
     margin: 0;
+    margin-left: 50px; /* Sol margin ekle */
+
+
+}
+#now {
+    font-size: 24px; /* Yazı boyutu */
+    font-weight: bold; /* Yazı kalınlığı */
+    color: #fff; /* Yazı rengi */
+    margin-left: 53px; /* Sol margin ekle */
 }
 
-#date, #city {
+#date, #city {  /* alt kutudaki city ve date bilgisi*/
     font-size: 18px;
     color: #ddd;
 }
@@ -305,4 +283,14 @@ body {
 /* Kartlar için ayarlar */
 .card, .humidity-card, .wind-card {
     width: 100%; /* Kart genişliklerini %100 yaparak tüm sütunu kaplamalarını sağlar */
+}
+ /* . class özelliğine göre(birden fazla öğe için ), 
+ # id= city name özelliğine göre seçer !*/
+#city1 {
+   
+    flex: 2;
+    text-align:left;
+    font-size: 40px;
+    text-transform: uppercase; /* Metni büyük harfe çevirme */
+
 }
