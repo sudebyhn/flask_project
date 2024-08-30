@@ -15,9 +15,9 @@ def get_weather():
     lat = request.args.get('lat')
     lon = request.args.get('lon')
     
-    api_key = 'f7372e9e86f5251932d2c1babdbcc07b'  # OpenWeatherMap API anahtarınızı buraya ekleyin
-    # https://api.openweathermap.org/data/2.5/weather?q={city}&appid=fb5acd8df88134644cbe08ebdca7ca80&units=metric
-    # http://api.openweathermap.org/data/2.5/weather?q=London&appid=fb5acd8df88134644cbe08ebdca7ca80&units=metric
+    api_key = 'f7372e9e86f5251932d2c1babdbcc07b'  # OpenWeatherMap API anahtarı
+    # https://api.openweathermap.org/data/2.5/weather?q={city}&appid=fb5acd8df88134644cbe08ebdca7ca80&units=metric 
+    # http://api.openweathermap.org/data/2.5/weather?q=London&appid=fb5acd8df88134644cbe08ebdca7ca80&units=metric postman kontrol  linki
     
     # URL'ler
     weather_url = 'http://api.openweathermap.org/data/2.5/weather'
@@ -45,8 +45,7 @@ def get_weather():
         weather_data = weather_response.json()
       
 
-        
-        
+    
         #json formatındaki apiden bilgileri parse ediypruz buraya
         # Gün doğumunu ve batımını al
         sunrise = weather_data['sys'].get('sunrise')
@@ -54,8 +53,6 @@ def get_weather():
 
         # Hissedilen sıcaklık, nem, minimum ve maksimum sıcaklıkları al
        
-        
-       # humidity = weather_data['main'].get('humidity')
        
         feels_like = weather_data['main'].get('feels_like')
         humidity = weather_data['main'].get('humidity')
@@ -77,11 +74,7 @@ def get_weather():
                     'description': item['weather'][0]['description'],
                     'icon': item['weather'][0]['icon'],
                     
-                    # SON EKLENEN
-                    # 'sunset': item['sys'].get('sunset'),
-                    # 'humidity': item['main'].get('humidity'),
-                    # 'sunrise': item['sys'].get('sunrise'),
-                    # bunları yazınca olmuyor try başka bişi
+                
                 })
 
         # Yanıt verisi yapılandırılıyor
@@ -98,10 +91,7 @@ def get_weather():
             'temp_min': temp_min,
             'temp_max': temp_max,
             'wind_speed': wind_speed  # Wind speed eklendi
-            # SON EKLENEN
-            # 'sunrise': weather_data['sys'].get('sunrise'),
-            # 'sunset': weather_data['sys'].get('sunset'),
-            # 'humidity': weather_data['main'].get('humidity'),
+           
         }
         return jsonify(weather_data)
     

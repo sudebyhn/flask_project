@@ -75,16 +75,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const iconElement = document.getElementById('icon');
                 const dateElement = document.getElementById('date');
                 const cityElement = document.getElementById('city');
+                const city1Element = document.getElementById('city1');
+
+
                 const humidityElement = document.getElementById('humidity');
-                const windSpeedElement = document.getElementById('wind-speed'); // Wind speed elemanı
+                const windSpeedElement = document.getElementById('wind-speed'); // Wind speed son eklendi
 
 
-                if (tempElement && descElement && iconElement && dateElement && cityElement && humidityElement) {
+                if (tempElement && descElement && iconElement && dateElement && cityElement && humidityElement && city1Element) {
                     tempElement.innerHTML = `${data.temp}&deg;C`; // Sıcaklık bilgisi
                     descElement.textContent = data.description; // Hava durumu açıklaması
                     iconElement.src = `https://openweathermap.org/img/wn/${data.icon}@2x.png`; // Hava durumu ikonu
                     dateElement.textContent = 'Today'; // Tarih bilgisi
                     cityElement.textContent = data.city; // Şehir adı
+                    city1Element.textContent = data.city; // city1Element için şehir adı
+
+
                     humidityElement.textContent = `Humidity: ${data.humidity}%`; 
                     // Nem oranı
                     windSpeedElement.textContent = `${data.wind_speed} m/s`; // Wind speed bilgisi
@@ -120,12 +126,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const sunriseElement = document.getElementById('sunrise');
                 const sunsetElement = document.getElementById('sunset');
                 if (sunriseElement && sunsetElement && data.sunrise && data.sunset) {
-                    const sunriseDate = new Date(data.sunrise * 1000); // Güneşin doğuş saatini Unix zaman damgasından oluştur
-                    const sunsetDate = new Date(data.sunset * 1000); // Güneşin batış saatini Unix zaman damgasından oluştur
-                    sunriseElement.textContent = sunriseDate.toLocaleTimeString(); // Güneşin doğuş saatini yerel saat formatında göster
-                    sunsetElement.textContent = sunsetDate.toLocaleTimeString(); // Güneşin batış saatini yerel saat formatında göster
+                    const sunriseDate = new Date(data.sunrise * 1000); // Güneşin doğuş saatini Unix zaman damgası
+                    const sunsetDate = new Date(data.sunset * 1000); // Güneşin batış saatini Unix zaman damgası
+                    sunriseElement.textContent = sunriseDate.toLocaleTimeString(); // Güneşin doğuş saatini yerel saat formatı
+                    sunsetElement.textContent = sunsetDate.toLocaleTimeString(); // Güneşin batış saatini yerel saat formatı
                 } else {
-                    console.error('Sunrise or sunset element not found in the DOM'); // Güneşin doğuş veya batış saatleri bulunamazsa hata mesajı göster
+                    console.error('Sunrise or sunset element not found in the DOM'); // Güneşin doğuş veya batış saatleri bulunamazsa hata 
                 }
             })
             .catch(error => console.error('Fetch error:', error)); // Fetch hatası varsa konsola yazdır
@@ -140,20 +146,24 @@ document.addEventListener('DOMContentLoaded', () => {
         const iconElement = document.getElementById('icon');
         const dateElement = document.getElementById('date');
         const cityElement = document.getElementById('city');
+        const city1Element = document.getElementById('city1');
+
         const humidityElement = document.getElementById('humidity');
         const sunriseElement = document.getElementById('sunrise');
         const sunsetElement = document.getElementById('sunset');
-        const windSpeedElement = document.getElementById('wind-speed'); // Wind speed elemanını ekleyin
+        const windSpeedElement = document.getElementById('wind-speed'); // Wind speed 
 
     
-        if (tempElement && descElement && iconElement && dateElement && cityElement && humidityElement && sunriseElement && sunsetElement) {
+        if (tempElement && descElement && iconElement && dateElement && cityElement && humidityElement && sunriseElement && sunsetElement && city1Element) {
             tempElement.innerHTML = `${data.temp}&deg;C`;
             descElement.textContent = data.description;
             iconElement.src = `https://openweathermap.org/img/wn/${data.icon}@2x.png`;
             dateElement.textContent = 'Today';
             cityElement.textContent = data.city;
+            city1Element.textContent = data.city; // city1Element için şehir adı
+
             humidityElement.textContent = `Humidity: ${data.humidity}%`;
-            windSpeedElement.textContent = `Wind Speed: ${data.wind_speed} m/s`; // Wind speed bilgisi eklenir
+            windSpeedElement.textContent = `Wind Speed: ${data.wind_speed} m/s`; // Wind speed bilgisi 
 
     
             const sunriseDate = new Date(data.sunrise * 1000);
