@@ -7,10 +7,17 @@
     <link href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+<!--sırası önemli jquery önce sonra java-->
+    <script src="{{ url_for('static', filename='js/jquery-3.7.0.min.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+
+
 </head>
 <body>
-
+    <script src="/static/jquery-3.7.1.min.js"></script>
+    <script src="/static/script.js"></script>
     <div class="container">  
         <div class="header">
             <h1>Live Weather Forecast</h1>
@@ -129,5 +136,10 @@
             </div>
         </div>
     </div>
+    <script src="{{ url_for('static', filename='js/jquery-3.7.0.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
 </body>
 </html>
