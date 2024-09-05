@@ -1,10 +1,7 @@
-# Live Weather Forecast Web Application
+# WeatherApp
 
-## Overview
+WeatherApp is a simple web application that allows users to enter a city name and view the current weather conditions. The application uses the OpenWeatherMap API to fetch weather data and display it to users visually. It also includes error handling for invalid city names and API errors.
 
-The Live Weather Forecast Web Application is a simple and interactive tool designed to provide users with current weather information and a 5-day weather forecast. Leveraging the OpenWeatherMap API, this application displays weather data based on user input or their current geographical location. Built using Python Flask for the backend and jQuery for frontend functionality, the application ensures a responsive and user-friendly interface.
-
-## Features
 
 - **Current Weather Information:**
   - Displays temperature, weather description, humidity, wind speed, sunrise, and sunset times.
@@ -21,22 +18,18 @@ The Live Weather Forecast Web Application is a simple and interactive tool desig
   - Handles invalid city names and API errors gracefully.
 
 ## Technologies Used
+ **Backend:**
+- **Python Flask**: Used for backend development
 
-- **Frontend:**
-  - HTML
-  - CSS
-  - jQuery
+ **Frontend:**
+- **HTML**: For structuring the web page.
+- **CSS**: For styling and layout of the page.
+- **jQuery**: For making HTTP requests and manipulating the DOM.
+- **JavaScript**: For handling API responses and updating the UI dynamically.
+- **OpenWeatherMap API**: For fetching weather data.
 
-- **Backend:**
-  - Python Flask
 
-- **API:**
-  - OpenWeatherMap
+## Brief Report
 
-## Getting Started
+You can view the detailed report of the Weather App project [here](Brief%20Report%20Of%20Weather%20App.pdf).
 
-### Prerequisites
-
-- Python 3.x
-- Flask
-- jQuery (included in static files)
