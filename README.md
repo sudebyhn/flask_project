@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # WeatherApp
 
 WeatherApp is a simple web application that allows users to enter a city name and view the current weather conditions. The application uses the OpenWeatherMap API to fetch weather data and display it to users visually. It also includes error handling for invalid city names and API errors.
@@ -33,3 +34,6 @@ WeatherApp is a simple web application that allows users to enter a city name an
 
 You can view the detailed report of the Weather App project [here](Brief%20Report%20Of%20Weather%20App.pdf).
 
+=======
+# flask_project
+>>>>>>> 24222cd349c76f2b0dcbb44e7d6ff8d665e374d9
