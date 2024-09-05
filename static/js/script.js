@@ -1,10 +1,10 @@
 $(document).ready(function() {   // "searchBtn" ve "locationBtn" butonlarını HTML'den seç
-    const searchBtn = $('#searchBtn');
-    const locationBtn = $('#locationBtn');
+    const searchBtn = $('#searchBtn'); //SearchBtn değişkenine atadık =htmlde ki seçyiğimiz #searchBtn elemanı 
+    const locationBtn = $('#locationBtn'); //jQuery'nin $ fonksiyonu, DOM elemanlarına erişmek için kullanılı
 
     // Kullanıcının konumunu al, sayfa yüklendiğinde otomatik olarak ve fetchWeatherData fonksiyonunu çağır
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(position => {
+        navigator.geolocation.getCurrentPosition(position => { //fonksiyonu, kullanıcının izniyle mevcut konumu alır.
             const lat = position.coords.latitude; // Kullanıcının enlem bilgisi
             const lon = position.coords.longitude; // Kullanıcının boylam bilgisi
             fetchWeatherData(null, lat, lon); // Konum bilgilerini kullanarak hava durumu verisini al
@@ -16,7 +16,7 @@ $(document).ready(function() {   // "searchBtn" ve "locationBtn" butonlarını H
     }
 
     // "locationBtn" butonuna tıklayınca konum al
-    if (locationBtn.length) {
+    if (locationBtn.length) {  //aynı geolocation işlemi tekrar başlar tıklandığında
         locationBtn.on('click', function() {            if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
                     const lat = position.coords.latitude; // Kullanıcının enlem bilgisi
@@ -36,12 +36,12 @@ $(document).ready(function() {   // "searchBtn" ve "locationBtn" butonlarını H
         searchBtn.on('click', function() {  // Butona tıklandığında, aşağıdaki anonim fonksiyon çalıştırılır.
             const city = $('#city_input').val(); // Şehir adı giriş alanından al
             fetchWeatherData(city); // Veri getirme
-        });
-    }
-});
+        });       //$('#city_input'): id'si city_input olan HTML elementini seçer
+    }             //.val(): Bu seçilen elementin değerini döndürür
+});               //input city i adını alır  city değişkenine atar
 
-// Hava durumu verilerini almak için bir fonksiyon
-function fetchWeatherData(city, lat = null, lon = null) { 
+// Hava durumu verilerini almak için bir fonksiyon 
+function fetchWeatherData(city, lat = null, lon = null) { //fetchWeatherData(city): Hava durumu verilerini çekmek için şehri API'ye gönderiyor
     let url = '/weather?'; // API URL'sini oluştur ve /weather? ile başlar
     if (city) {
         url += `city=${city}`; // Şehir adı varsa URL'ye ekle
@@ -77,16 +77,18 @@ function fetchWeatherData(city, lat = null, lon = null) {
             const city1Element = document.getElementById('city1');
             const humidityElement = document.getElementById('humidity');
             const windSpeedElement = document.getElementById('wind-speed'); // Wind speed son eklendi
-
-            // Hava durumu bilgilerini DOM'a yerleştir
+            const sunriseElement = document.getElementById('sunrise');
+            const sunsetElement = document.getElementById('sunset');
+          
+            // Hava durumu bilgilerini DOM'a yerleştirdi
             if (tempElement && descElement && iconElement && dateElement && cityElement && humidityElement && city1Element) {
                 tempElement.innerHTML = `${data.temp}&deg;C`; // Sıcaklık bilgisi
-                descElement.textContent = data.description; // Hava durumu açıklaması
+                descElement.textContent = data.description; // textContent, elementin sadece düz metnini ayarlar. data.description, API'den alınan hava durumu açıklamasıdı
                 iconElement.src = `https://openweathermap.org/img/wn/${data.icon}@2x.png`; // Hava durumu ikonu
                 dateElement.textContent = 'Today'; // Tarih bilgisi
                 cityElement.textContent = data.city; // Şehir adı
                 city1Element.textContent = data.city; // Şehir adı
-                humidityElement.textContent = `Humidity: ${data.humidity}%`; 
+                humidityElement.textContent = `Humidity: ${data.humidity}%`; //apiden gelen humidity değerini yüzde iişareti ile beraber yazdırı.
                 windSpeedElement.textContent = `${data.wind_speed} m/s`; // Wind speed 
             } else {
                 console.error('One or more elements are missing in the DOM'); // Gerekli DOM elemanlarından biri eksikse hata mesajı göster
@@ -115,9 +117,7 @@ function fetchWeatherData(city, lat = null, lon = null) {
                 console.error('day-forcast not found'); // Hava tahmini konteynırı bulunamazsa hata mesajı göster
             }
 
-            // Güneşin doğuş ve batış saatlerini güncelle
-            const sunriseElement = document.getElementById('sunrise');
-            const sunsetElement = document.getElementById('sunset');
+           
             if (sunriseElement && sunsetElement && data.sunrise && data.sunset) {
                 const sunriseDate = new Date(data.sunrise * 1000); // Güneşin doğuş saatini Unix zaman damgası
                 const sunsetDate = new Date(data.sunset * 1000); // Güneşin batış saatini Unix zaman damgası
